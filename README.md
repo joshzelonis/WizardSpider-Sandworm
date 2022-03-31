@@ -10,7 +10,9 @@ I'm including the XLSX in the source tree to save trouble running the code if th
 
 ## Requirements
 python3
+
 pip3 install -r requirements.txt
+
 curl (to download the json data)
 
 ## FAQ
