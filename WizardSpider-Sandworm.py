@@ -126,7 +126,7 @@ def parse_args():
     parser.add_argument(
         '--strict-mitre',
         help='Override analysis and stick to raw data',
-        default=False,
+        default=True,
         action='store_true'
     )
 
@@ -138,7 +138,7 @@ def parse_args():
 if __name__ == '__main__':
 
     args = parse_args()
-    fname = 'jz-analysis.xlsx' if not args.strict_mitre else 'strict-mitre.xlsx'
+    fname = 'wizard-spider-sandworm-mitre.xlsx'
 
     dfs = {}
     for infile in sorted(glob.glob(os.path.join('data', '*json'))):
