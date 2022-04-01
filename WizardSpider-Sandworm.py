@@ -113,10 +113,10 @@ class Carbanak_FIN7Eval():
             na = 0
         substeps = len(obj._df.index) - na
         visibility = substeps - misses
-        analytics = techniques / visibility if not self._strict_mitre else (techniques + tactic + general)/substeps
+        analytics = (techniques + tactic + general)/substeps
         protections = self.scoreProtections()
         linux = 'yes' if 'Linux Capability' in self._adv['Participant_Capabilities'] else 'no'
-        return (visibility/substeps, analytics, protections, linux)
+        return (visibility/substeps, techniques/substeps, analytics, protections, linux)
 
 
 def parse_args():
@@ -138,7 +138,7 @@ def parse_args():
 if __name__ == '__main__':
 
     args = parse_args()
-    fname = 'fin7eval.xlsx' if not args.strict_mitre else 'fin7eval-strict-mitre.xlsx'
+    fname = 'jz-analysis.xlsx' if not args.strict_mitre else 'strict-mitre.xlsx'
 
     dfs = {}
     for infile in sorted(glob.glob(os.path.join('data', '*json'))):
@@ -147,16 +147,17 @@ if __name__ == '__main__':
         dfs.update({obj._vendor: obj})
 
     writer = pd.ExcelWriter(fname, engine='xlsxwriter')
-    results = pd.DataFrame(columns=['vendor',     \
-                                    'visibility',    \
+    results = pd.DataFrame(columns=['vendor',       \
+                                    'visibility',   \
+                                    'techniques',   \
                                     'analytics',    \
-                    'protection',    \
-                    'linux'])
+                                    'protection',   \
+                                    'linux'])
 
     # Write out results tab
     for vendor in dfs.keys():
-        (visibility, analytics, protection, linux) = dfs[vendor].scoreVendor()
-        results.loc[len(results.index)] = {'vendor':vendor, 'visibility':visibility, 'analytics':analytics, 'protection':protection, 'linux':linux}
+        (visibility, techniques, analytics, protection, linux) = dfs[vendor].scoreVendor()
+        results.loc[len(results.index)] = {'vendor':vendor, 'visibility':visibility, 'techniques':techniques, 'analytics':analytics, 'protection':protection, 'linux':linux}
     results.to_excel(writer, sheet_name='Results', index=False)
 
     # Write out individual vendor tabs
