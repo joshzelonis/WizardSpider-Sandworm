@@ -1,33 +1,10 @@
 #!/bin/bash
 #
 
-cd data/
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/AhnLab_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Bitdefender_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/CheckPoint_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Cisco_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/CrowdStrike_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/CyCraft_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Cybereason_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Cylance_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Cynet_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/ESET_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Elastic_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/F-Secure_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Fidelis_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/FireEye_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Fortinet_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/GoSecure_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Malwarebytes_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/McAfee_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/MicroFocus_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Microsoft_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/OpenText_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/PaloAltoNetworks_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/ReaQta_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/SentinelOne_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Sophos_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Symantec_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/TrendMicro_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/Uptycs_Results.json
-curl -O https://attackevals.mitre-engenuity.org/downloadable_JSON/VMware_Results.json
+vendors='ahnlab bitdefender checkpoint cisco crowdstrike cybereason cycraft cylance cynet deepinstinct elastic eset f-secure fidelis fireeye fortinet malwarebytes mcafee microsoft paloaltonetworks qualys rapid7 reaqta sentinelone somma sophos symantec trendmicro uptycs vmware'
+
+echo "this isn't working right now, please download manually while I get this working again."
+#cd data/
+#for val in $vendors; do
+#	curl -k "https://attackevals.mitre-engenuity.org/api/export/?participant=$val&adversary=wizard-spider-sandworm" -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:98.0) Gecko/20100101 Firefox/98.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br' -H 'Referer: https://attackevals.mitre-engenuity.org/enterprise/participants/ahnlab?view=overview&adversary=wizard-spider-sandworm' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-GPC: 1' --output "$val.json"
+#done
