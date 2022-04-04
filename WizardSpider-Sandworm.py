@@ -7,11 +7,11 @@ import glob
 import os
 
 
-class Carbanak_FIN7Eval():
+class EvalMitreResults():
     def __init__(self, filename, strict_mitre=False):
         self._strict_mitre = strict_mitre
         self._vendor = filename.split(os.sep, 2)[-1]
-        self._vendor = self._vendor.split('_', 1)[0]
+        self._vendor = self._vendor.split('.', 1)[0]
         print('Processing %s' % self._vendor)
         with open(filename, 'r', encoding='utf-8') as infile:
             data=infile.read()
@@ -65,7 +65,7 @@ class Carbanak_FIN7Eval():
 
     # select adversary to analyze (stubbed out for future)
     def selectAdversary(self, adversary='wizard-spider-sandworm'):
-        for adversary in self._obj['Adversaries']:
+        for adversary in self._obj[0]['Adversaries']:
             if adversary['Adversary_Name'] == 'wizard-spider-sandworm':
                 self._adv = adversary
                 break
@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
     dfs = {}
     for infile in sorted(glob.glob(os.path.join('data', '*json'))):
-        obj = Carbanak_FIN7Eval(infile, args.strict_mitre)
+        obj = EvalMitreResults(infile, args.strict_mitre)
         obj.selectAdversary('wizard-spider-sandworm')
         dfs.update({obj._vendor: obj})
 
