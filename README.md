@@ -1,5 +1,11 @@
 # WizardSpider-Sandworm
-This code base is tested and working, look forward to an upcoming blog on https://medium.com/the-recovering-analyst
+This code base is tested and working, check out my blog for thoughts on this years' evaluation https://medium.com/the-recovering-analyst/the-mitre-att-ck-evaluation-needs-to-evolve-6bf2074138e4
+
+## Installation
+
+chmod +x pull_scores.sh
+./pull_scores.sh
+pip3 install -r requirements.txt
 
 The output of the WizardSpider-Sandworm.py script will output an XLSX workbook that will allow you to parse and play with vendor scores based on the analysis I've performed for the past 4 years. 
 
@@ -11,12 +17,6 @@ python3
 pip3 install -r requirements.txt
 
 curl (to download the json data)
-
-## FAQ
-
-Q: Is there a more in depth analysis of this data anywhere?
-
-A: I recommend you check out my blog on the subject of analyzing this years' results... (upcoming).
 
 
 ## Thanks
